@@ -100,5 +100,56 @@
             // Imprime a mensagem do ataque
             Console.WriteLine($"O {heroi.Tipo} atacou usando {ataque}");
         }
+
+        public void CalculadoradePartidasRankeadas()
+        {
+
+            Console.WriteLine($"Digite a quantidade de vitorias!");
+            var votoria = int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"Digite a quantidade de derrotas!");
+            var derrota = int.Parse(Console.ReadLine());
+
+            int saldo = VerificarSaldo(votoria, derrota); // Inserir número de vitórias seguido de derrotas
+            string nivel = ""; // Declaração da variável "nivel"
+
+            if (saldo <= 10)
+            {
+                nivel = "Ferro";
+            }
+            else if (saldo > 10 && saldo <= 20)
+            {
+                nivel = "Bronze";
+            }
+            else if (saldo > 20 && saldo <= 50)
+            {
+                nivel = "Prata";
+            }
+            else if (saldo > 50 && saldo <= 80)
+            {
+                nivel = "Ouro";
+            }
+            else if (saldo > 80 && saldo <= 90)
+            {
+                nivel = "Diamante";
+            }
+            else if (saldo > 90 && saldo <= 100)
+            {
+                nivel = "Lendário";
+            }
+            else if (saldo >= 101)
+            {
+                nivel = "Imortal";
+            }
+
+            Console.WriteLine("O Herói tem um saldo de " + saldo + " e está no nível de " + nivel); // Mostra o resultado final desejado
+        }
+
+        static int VerificarSaldo(int vitorias, int derrotas)
+        {
+            int quantidadeVitorias = vitorias; // Variável criada para guardar o número de vitórias
+            int saldoVitorias = vitorias - derrotas;
+            return saldoVitorias;
+        }
     }
 }
